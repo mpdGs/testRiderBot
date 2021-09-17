@@ -102,7 +102,10 @@ body,html {
 	};
 	
 	
-	embedded_svc.bootstrapEmbeddedService();
+	embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
+	    console.log("onSettingsCallCompleted event was fired. Agent availability status is " + data.isAgentAvailable ? "online": "offline");
+	    embedded_svc.bootstrapEmbeddedService();
+	});
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
