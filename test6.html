@@ -16,21 +16,25 @@
 
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
                             <input type=hidden name='captcha_settings' value='{"keyname":"Test","fallback":"true","orgId":"00DB0000000KvCH","ts":""}'>
-                            <input type=hidden name="orgid" value="00DB0000000KvCH">
-                        <input type=hidden name="retURL" value="http://www.google.com">
-
+	                    <input type="hidden" name="orgid" value="00DB0000000KvCH">
+                        <input type="hidden" name="retURL" value="http://www.google.com">
 
                         <!--  NOTE: These fields are optional debugging elements. Please uncomment
-                        these lines if you wish to test in debug mode.
+                        these lines if you wish to test in debug mode.-->
+ 
                         <input type="hidden" name="debug" value=1>
                         <input type="hidden" name="debugEmail" value="matthew@gscloudsolutions.com">
+ 
+ 
 
                         <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
 
                         <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
+ 
                         <label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
 
+ 
                         <label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
 
                         <label for="description">Description</label><textarea name="description"></textarea><br>
@@ -41,6 +45,7 @@
                           <option value="Medium">Medium</option>
                           <option value="Low">Low</option>
                         </select><br>
+ 
 
                         <div class="g-recaptcha" data-sitekey="12345"></div><br>
                         <input type="submit" name="submit">
