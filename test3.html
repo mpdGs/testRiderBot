@@ -1,0 +1,66 @@
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                        <input type=hidden name="captcha_settings" value='{"keyname":"ESLV_ReCaptcha","fallback":"true","orgId":"00D5e00000150LK","ts":""}'>
+                        <input type="hidden" name="orgid" value="00D5e00000150LK">
+                        <input type="hidden" name="retURL" value="http://elsalvador.renaware.com">
+
+                        <!-- NOTE: These fields are optional debugging elements. Please uncomment
+                        these lines if you wish to test in debug mode.-->
+                        
+                        <input type="hidden" name="debug" value="1">
+                        <input type="hidden" name="debugEmail" value="smoran@renaware.com">
+                        
+
+
+                        <label for="name">Contact Name *</label><input id="name" required class="form-control" maxlength="80" name="name" size="20" type="text" /><br>
+
+                        <label for="email">Email</label><input id="email" class="form-control" maxlength="80" name="email" size="20" type="text" /><br>
+
+                        <label>Account Number</label><input id="00N5e00000Y4AJF" class="form-control" maxlength="7" name="00N5e00000Y4AJF" size="20" type="text" /><br>
+
+                        <label for="phone">Phone</label><input id="phone" class="form-control" maxlength="40" name="phone" size="20" type="text" /><br>
+
+                        <label>Product Category</label><select id="00N5e00000Y4AJJ" class="form-control" name="00N5e00000Y4AJJ" title="Product Category">
+                            <option value="">--None--</option>
+                            <option value="Not Applicable">Not Applicable</option>
+                            <option value="Accessories - Accesorios">Accessories - Accesorios</option>
+                            <option value="Cookware - Utencilios de Cocina">Cookware - Utencilios de Cocina</option>
+                            <option value="Electrical - Eléctricos">Electrical - Eléctricos</option>
+                            <option value="Water Filters - Filtros de agua">Water Filters - Filtros de agua</option>
+                        </select><br>
+
+                        <label> Date Purchased</label><span class="dateInput dateOnlyInput"><input class="form-control" id="00N5e00000Y4AJI" name="00N5e00000Y4AJI" size="12" type="text" /></span><br>
+
+                        <label>Representative Name</label><input class="form-control" id="00N5e00000Y4AJK" maxlength="255" name="00N5e00000Y4AJK" size="20" type="text" /><br>
+
+                        <label for="type">Type</label><select class="form-control" id="type" name="type" required>
+                            <option value="">--None--</option>
+                            <option value="Shipments">Shipments</option>
+                            <option value="Products">Products</option>
+                            <option value="Payments">Payments</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                            <option value="Leaders">Leaders</option>
+                            <option value="Merchandise">Merchandise</option>
+                        </select><br>
+
+                        <label for="subject">Subject</label><input id="subject" class="form-control" maxlength="80" name="subject" size="20" type="text" /><br>
+
+                        <label for="description">Description</label><textarea class="form-control" name="description"></textarea><br>
+
+                        <label for="priority">Priority</label><select id="priority" class="form-control" name="priority">
+                            <option value="">--None--</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                            <option value="Critical">Critical</option>
+                        </select><br>
+
+                        <label>Market</label><select class="form-control" id="00N5e00000f3NVg" name="00N5e00000f3NVg" title="Market" required>
+                            <option value="">--None--</option>
+                            <option value="US">USA</option>
+                            <option value="SV">El Salvador</option>
+                        </select><br>
+
+                        <div class="g-recaptcha" data-sitekey="6LcuimkdAAAAALIPhiWbIEzWteBjvb9W0dWFVND4"></div><br>
+                        <input class="btn btn-primary" type="submit" name="submit">
+
+                    </form>
