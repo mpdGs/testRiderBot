@@ -5,6 +5,10 @@
 <!--  ----------------------------------------------------------------------  -->
 
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
 
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
@@ -12,14 +16,15 @@
 
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
 
+<input type=hidden name='captcha_settings' value='{"keyname":"Test","fallback":"true","orgId":"00DB0000000KvCH","ts":""}'>
 <input type=hidden name="orgid" value="00DB0000000KvCH">
 <input type=hidden name="retURL" value="http://www.google.com">
 
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
 <!--  these lines if you wish to test in debug mode.                          -->
- <input type="hidden" name="debug" value=1>
- <input type="hidden" name="debugEmail" value="matthew@gscloudsolutions.com">                                  
+<input type="hidden" name="debug" value=1>
+<input type="hidden" name="debugEmail" value="matthew@gscloudsolutions.com"> 
 <!--  ----------------------------------------------------------------------  -->
 
 <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
@@ -32,6 +37,27 @@
 
 <label for="description">Description</label><textarea name="description"></textarea><br>
 
+<label for="reason">Case Reason</label><select  id="reason" name="reason"><option value="">--None--</option><option value="Installation">Installation</option>
+<option value="Equipment Complexity">Equipment Complexity</option>
+<option value="Performance">Performance</option>
+<option value="Breakdown">Breakdown</option>
+<option value="Equipment Design">Equipment Design</option>
+<option value="Feedback">Feedback</option>
+<option value="Other">Other</option>
+</select><br>
+
+Product:<select  id="00NB0000009f8dM" name="00NB0000009f8dM" title="Product"><option value="">--None--</option><option value="GC1040">GC1040</option>
+<option value="GC1060">GC1060</option>
+<option value="GC3020">GC3020</option>
+<option value="GC3040">GC3040</option>
+<option value="GC3060">GC3060</option>
+<option value="GC5020">GC5020</option>
+<option value="GC5040">GC5040</option>
+<option value="GC5060">GC5060</option>
+<option value="GC1020">GC1020</option>
+</select><br>
+
+<div class="g-recaptcha" data-sitekey="12345"></div><br>
 <input type="submit" name="submit">
 
 </form>
