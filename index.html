@@ -76,9 +76,6 @@
 	    embedded_svc.settings.chatbotAvatarImgURL = 'https://californiaclosets--dev--c.visualforce.com/resource/1661378589000/CCLogo';
 
 	    embedded_svc.settings.avatarImgURL = 'https://californiaclosets--dev--c.visualforce.com/resource/1661378589000/CCLogo';
-            embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
-	    	console.log("onSettingsCallCompleted event was fired. Agent availability status is " + data.isAgentAvailable ? "online": "offline");
-	    embedded_svc.bootstrapEmbeddedService();
 	     });
 
  
