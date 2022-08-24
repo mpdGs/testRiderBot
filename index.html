@@ -1,7 +1,47 @@
 <!DOCTYPE html>
 <html>
+ 
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   <script type='text/javascript'>
+       function onBodyLoaded() {
+           /**
+             * Toggles the inert attribute on background content for the page.
+             * The inert attribute just needs to be set on parent level DOM
+             * nodes. Inert will set the DOM node aria-hidden attribute and
+             * and set tab-index="-1" on all children so that screen readers
+             * can't access the content.
+             */
+           function toggleInert(disabled) {
+               let bodyElem = document.getElementById("body-content");
+               if(bodyElem) {
+                   bodyElem.inert = disabled;
+               }
+           }
+ 
+           // Add hooks to toggle inert on our page when Embedded Chat
+           // changes state.
+           function addA11yHooks() {
+               embedded_svc.addEventHandler('afterMaximize', function(data) {
+                   toggleInert(true);
+               });
+               embedded_svc.addEventHandler('afterDestroy', function(data) {
+                   toggleInert(false);
+               });
+               embedded_svc.addEventHandler('afterMinimize', function(data) {
+                   toggleInert(false);
+               });
+           }
+ 
+           // Early out for desktop.
+           if(embedded_svc.isDesktop()) {
+               return;
+           }
+ 
+           // Add hooks for mobile.
+           addA11yHooks();
+       }
+   </script>
 </head>
  
 <body onload="onBodyLoaded()" style='background-image: url(https://raw.githubusercontent.com/mpdGs/testRiderBot/main/ConfirmationScreen.jpeg);background-position: center;background-size: 100% 100%; height: 2000px'>
@@ -76,6 +116,9 @@
 	    embedded_svc.settings.chatbotAvatarImgURL = 'https://californiaclosets--dev--c.visualforce.com/resource/1661378589000/CCLogo';
 
 	    embedded_svc.settings.avatarImgURL = 'https://californiaclosets--dev--c.visualforce.com/resource/1661378589000/CCLogo';
+            //embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
+	    	console.log("onSettingsCallCompleted event was fired. Agent availability status is " + data.isAgentAvailable ? "online": "offline");
+	    //embedded_svc.bootstrapEmbeddedService();
 	     });
 
  
