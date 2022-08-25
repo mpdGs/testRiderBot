@@ -1,63 +1,62 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
-<!--  If necessary, please modify the charset parameter to specify the        -->
-<!--  character set of your HTML page.                                        -->
-<!--  ----------------------------------------------------------------------  -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-<script src="https://www.google.com/recaptcha/api.js"></script>
-<script>
- function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://californiaclosets--dev.my.salesforce.com',
+			'https://dev-californiaclosets.cs213.force.com',
+			gslbBaseURL,
+			'00D780000004d46',
+			'Rider_Bot',
+			{
+				baseLiveAgentContentURL: 'https://c.la5-c1cs-ia4.salesforceliveagent.com/content',
+				deploymentId: '57278000000001O',
+				buttonId: '57378000000002R',
+				baseLiveAgentURL: 'https://d.la5-c1cs-ia4.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I78000000CaTcEAK_182d1d444f8',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://californiaclosets--dev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
 </script>
-
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <FORM> element to your page.             -->
-<!--  ----------------------------------------------------------------------  -->
-
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
-
-<input type=hidden name='captcha_settings' value='{"keyname":"Test","fallback":"true","orgId":"00DB0000000KvCH","ts":""}'>
-<input type=hidden name="orgid" value="00DB0000000KvCH">
-<input type=hidden name="retURL" value="http://www.google.com">
-
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-<!--  these lines if you wish to test in debug mode.                          -->
-<input type="hidden" name="debug" value=1>
-<input type="hidden" name="debugEmail" value="matthew@gscloudsolutions.com"> 
-<!--  ----------------------------------------------------------------------  -->
-
-<label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
-
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
-
-<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
-
-<label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
-
-<label for="description">Description</label><textarea name="description"></textarea><br>
-
-<label for="reason">Case Reason</label><select  id="reason" name="reason"><option value="">--None--</option><option value="Installation">Installation</option>
-<option value="Equipment Complexity">Equipment Complexity</option>
-<option value="Performance">Performance</option>
-<option value="Breakdown">Breakdown</option>
-<option value="Equipment Design">Equipment Design</option>
-<option value="Feedback">Feedback</option>
-<option value="Other">Other</option>
-</select><br>
-
-Product:<select  id="00NB0000009f8dN" name="00NB0000009f8dN" title="Product"><option value="">--None--</option><option value="GC1040">GC1040</option>
-<option value="GC1060">GC1060</option>
-<option value="GC3020">GC3020</option>
-<option value="GC3040">GC3040</option>
-<option value="GC3060">GC3060</option>
-<option value="GC5020">GC5020</option>
-<option value="GC5040">GC5040</option>
-<option value="GC5060">GC5060</option>
-<option value="GC1020">GC1020</option>
-</select><br>
-
-<div class="g-recaptcha" data-sitekey="12345"></div><br>
-<input type="submit" name="submit">
-
-</form>
